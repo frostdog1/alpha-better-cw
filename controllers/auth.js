@@ -1,9 +1,12 @@
 // bring in user model
 const User = require('../models/User')
+// bring in the error response handler
+const CustomError = require('../utils/customError');
 
 // set up response when register is called
 // as working with db, async func required
-exports.register = async(req, res, next) => {
+// errors will be handled by function in (middleware/error) using next()
+exports.register = async(req, res, next) => { 
     // extract user details from the body
     const {username, email, password} = req.body;
 
@@ -13,20 +16,14 @@ exports.register = async(req, res, next) => {
             // avoids bloating controller function with hashing functionality
             username, email, password,
         });
+
         // status 201 new resource created successfully
-        res.status(201).json({
-            success: true,
-            user: user,
-        });
+        giveToken(user, 201, res); // call giveToken function defined below
     } catch (error) {
-        // status 500 internal server error
-        res.status(500).json({
-            success: false,
-            error: error.message,
-        });
-        
+        // pass the custom error messages 
+        next(error)
     }
-   
+
 
 };
 
@@ -36,19 +33,20 @@ exports.login = async (req, res, next) => {
     const {email, password} = req.body;
     // check that the email/password has been previously provided
     if(!email || !password){
-        // status 400 bad/invalid request
-        res.status(400).json({ success: false, error: "Please provide an email and password"});
+        // as defined in middleware/error, a CustomError takes a message and status code
+        // as server will not process request, 400 bad request used
+        return next(new CustomError("Please enter your email and password", 400))
     }
 
     try {
         // use the email as its unique to find the user in db
-        // this will return all the user details and the password
+        // this will return all the user details (id, username, email) and the password
         const user = await User.findOne({ email }).select("+password");
 
         // if no user is returned
         if(!user) {
-            // status 404 user not found
-            res.status(404).json( {success: false, error: "Invalid user credentials"});
+            // status 401 unauthorised user request
+            return next(new CustomError("Cannot find a user with these login details", 401))
         }
 
         // now check that the user password matches
@@ -58,15 +56,12 @@ exports.login = async (req, res, next) => {
 
         // if string password does not match one from db
         if(!passwordMatch){
-            // status 404 user not found
-            res.status(404).json({ success: false, error: "Password is incorrect"});
+            // status 401, unauthorised user request
+            return next(new CustomError("Please enter your email and password", 401))
         }
 
         // once email and password is checked, respond with a jsonWebToken so they can login
-        res.status(200).json({
-            success: true,
-            token: "we90r8env",
-        });
+        giveToken(user, 200, res); // 200 OK, successful request
 
     } catch (error) {
         // status 500 internal server error
@@ -85,4 +80,15 @@ exports.forgotPassword = (req, res, next) => {
 exports.resetPassword = (req, res, next) => {
     res.send("Reset Password Route")
 
+}
+
+// token requires user email and id, statusCode and resonse cylce
+const giveToken = (user, statusCode, res) => {
+    // as user receives all user details upon successful login
+    // there is access to this._id
+    // signToken uses id as the payload for the jwt
+    const Token = user.signToken();
+
+    // respond with the token 
+    res.status(statusCode).json({ success: true, Token})
 }
