@@ -1,0 +1,11 @@
+/* the backdrop will be overlapping the navbar */
+.backdrop {
+	width: 100%;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.5);
+	/* navbar z-index was 50 */
+	z-index: 100; /* z-index must be higher than the navbar z-index to overlap visibly */
+	position: fixed; /* whenever scroll always remains same pos */
+	top: 0;
+	left: 0;
+}

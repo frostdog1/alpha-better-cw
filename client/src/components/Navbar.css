@@ -1,0 +1,113 @@
+.navbar {
+	width: 100%;
+	height: 110px; /* added height equal to the browser computed height to avoid navbar jumping when hamburger menu appeared */
+	background-color: #510180;
+	display: flex; /* push items in nav bar next to each other */
+	justify-content: space-between; /* give space inbetween each nav item */
+	align-items: center;
+	padding: 1.5rem 1rem;
+	z-index: 50; /* z-index is required as there will be a backdrop and navdrawer sliding over it */
+}
+
+/* style the logo */
+.navbar__logo h2 {
+	color: #f4f4f4;
+	font-size: 1.4rem;
+	cursor: pointer; /* make it obvious that the cart logo can be clicked */
+}
+
+/* style the <ul> items */
+.navbar__links {
+	display: flex;
+	list-style: none;
+	align-items: center;
+}
+
+/* find all the <li> tags */
+.navbar__links > li {
+	padding-left: 1.5rem;
+}
+
+/* style the <a> tags */
+.navbar__links > li > a {
+	text-decoration: none;
+	color: #f4f4f4;
+	font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+}
+
+/* style the <span tag> */
+.navbar__links > li > a > span {
+	display: flex;
+	align-items: center;
+	margin-left: 8px;
+}
+
+/* give the cart link a clear border to click , gives a button look*/
+.cart__link {
+	background: #333;
+	padding: 10px;
+	border-radius: 8px;
+}
+
+/* highlight the cart button on hover */
+.cart__link:hover {
+	background: #dd219e;
+	color: #f4f4f4;
+}
+
+/* style the number that appears within the cart indicating how many items a user has added to the cart */
+.cartlogo__badge {
+	width: 30px;
+	height: 30px;
+	background-color: #f4f4f4;
+	border-radius: 50%; /* make it round */
+	margin-left: 8px;
+	color: #171717;
+	display: flex; /* everything in span center */
+	justify-content: center;
+	align-items: center;
+	font-size: 1rem;
+}
+
+/* the hamburger menu should not appear when screen is full screen */
+.hamburger__menu {
+	display: none; /* so do not display, @media will set this */
+	width: 30px;
+	height: 30px;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+}
+
+/* make hamburger bars change colour on hover */
+.hamburger__menu:hover > div {
+	background: #dd219e;
+}
+
+/* each div will make up the three bars of the hamburer menu 'icon' */
+.hamburger__menu > div {
+	width: 100%;
+	height: 3px;
+	background: #f4f4f4;
+}
+
+/* on a mobile screen, hide the nav bar links, (Cart button & shop button) */
+@media (max-width: 960px) {
+	.navbar__links {
+		display: none;
+	}
+	/* replace these navbar links with the hamburger icon instead */
+	.hamburger__menu {
+		display: flex;
+	}
+}
+
+/* change the size of the navbar logo (really the text) when mobile size */
+@media (max-width: 500px) {
+	.navbar__logo h2 {
+		font-size: 1rem;
+	}
+}

@@ -1,0 +1,90 @@
+.navdrawer {
+	width: 70%; /* when side drawer appears should take up most of screen, not all */
+	background: #fff; /* give contrasting colour to the body */
+	height: 100vh;
+	position: fixed; /* ensure position remains fixed */
+	top: 0; /* must be positoned at the top and come from the left */
+	left: 0;
+	/* navbar z-index was 50, backdrop z-index was 100 */
+	z-index: 200; /* set this z-index to 200 so that the sidedraw overlaps everything */
+
+	/* transform used to transition the sidedrawer more smoothly */
+	transform: translateX(-100%);
+	transition: all 0.3s ease-out; /* will start fast then end slow */
+
+	/* following 3 stylings will center the navigatable links in the side drawer */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* when the navdrawer is set to true it will add this class to the component */
+.navdrawer.show {
+	transform: translateX(0);
+}
+
+/* style the links within the side drawer */
+.navdrawer__links {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+}
+
+/* style the individual <li> tags */
+.navdrawer__links > li {
+	display: flex;
+	align-items: center;
+}
+
+/* style the <a> tags so they are centered */
+.navdrawer__links > li > a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	flex: 1;
+	padding: 1rem;
+	text-decoration: none;
+	color: #171717;
+	font-size: 1.6rem;
+}
+
+/* make the links more responsive with hovering colour changes */
+.navdrawer__links > li > a:hover {
+	background: #333;
+	color: #f4f4f4;
+}
+
+/* seperate the two links */
+.navdrawer__links > li > a > span {
+	display: flex;
+	align-items: center;
+	margin-left: 8px;
+}
+
+/* style the badge of the cart, i.e. the number of items in cart */
+.navdrawer__cartbadge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	background-color: #171717;
+	border-radius: 50%; /* give round border to the badge */
+	margin-left: 8px;
+	color: #fff;
+	font-size: 1rem;
+}
+
+/* make the badge stand out when hovered */
+.navdrawer__links > li > a:hover .navdrawer__cartbadge {
+	background-color: #fff;
+	color: #171717;
+}
+
+/* once out of mobile view, hide the side drawer */
+@media (min-width: 960px) {
+	.navdrawer {
+		display: none;
+	}
+}

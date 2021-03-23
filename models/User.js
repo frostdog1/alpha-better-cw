@@ -57,7 +57,7 @@ UserSchema.methods.matchPassword = async function(password) {
     return await bcrypt.compare(password, this.password)
 }
 
-// this function will use json web token and return a signed roken
+// this function will use json web token and return a signed token
 UserSchema.methods.signToken = function() {
     // sign() payload is object that contains id field
     // sign() secret is a random hash value in config.env
@@ -66,8 +66,8 @@ UserSchema.methods.signToken = function() {
     return jwt.sign({ id: this._id}, process.env.JWT_SECRET,
         {expiresIn: process.env.JWT_EXPIRE}); 
 
-        // should be noted process.env is accessible due to
-        // it being declared before auth in server
+    // should be noted process.env is accessible due to
+    // it being declared before auth in server
 
 }
 

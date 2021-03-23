@@ -12,4 +12,4 @@ const { protect } = require("../middleware/protect")
 router.route("/").get(protect, getPrivateData); // get request to test for private data
 
 // export router
-module.exports = router;
+module.exports = router; 
