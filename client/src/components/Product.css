@@ -1,0 +1,124 @@
+/* style the product card */
+.product {
+	width: 300px;
+	padding: 1rem;
+	background: #fff; /* make the grid item stand out */
+	cursor: pointer;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+	margin: 8px auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
+/* style the image within the card */
+.product > img {
+	width: 100%;
+	height: 170px;
+	object-fit: contain;
+	border-radius: 8px; /* add a slight border radius */
+}
+
+/* provide some space at the bottom of the card and all the product info */
+.product__info > p {
+	margin-bottom: 8px;
+}
+
+/* make the price stand out */
+.info__price {
+	font-weight: bold;
+}
+
+/* name of the product */
+.info__name {
+	font-size: 1rem;
+	overflow: hidden; /* if name becomes too long cut it off */
+}
+
+/* make description slightly smaller than rest of info */
+.info__description {
+	font-size: 0.8rem;
+}
+
+/* style the link as a button */
+.info__button {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	color: #171717;
+	width: 100%;
+	padding: 8px 16px;
+	background-color: #f4f4f4;
+	border: 1px solid #171717;
+	font-size: 1rem;
+}
+
+/* make the button stand out with changing colours on hover */
+.info__button:hover {
+	background: #171717;
+	color: #f4f4f4;
+}
+
+/* make the size of the product cards increase in size as they reduce to 3 in a column */
+@media (max-width: 1232px) {
+	.product {
+		width: 360px;
+	}
+}
+
+/* slight decrease in card size when window becomes smaller, whilst still having 3 in a column */
+@media (max-width: 1115px) {
+	.product {
+		width: 330px;
+	}
+}
+
+/* 3 cards in column, smaller window size, slight decrease in card size */
+@media (max-width: 1028px) {
+	.product {
+		width: 300px;
+	}
+}
+
+/* breakpoint for mobile devices when there is one fragment, increase the size of the cards to fill the page */
+@media (max-width: 950px) {
+	.product {
+		width: 400px;
+	}
+}
+
+/* 1 fragment per card, smaller window so smaller card */
+@media (max-width: 830px) {
+	.product {
+		width: 330px;
+	}
+}
+
+/* further decrease in size of card for mobile as window gets smaller */
+@media (max-width: 700px) {
+	.product {
+		width: 290px;
+	}
+}
+
+/* further decrease in size of card for mobile as window gets smaller */
+@media (max-width: 630px) {
+	.product {
+		width: 450px;
+	}
+}
+
+/* further decrease in size of card for mobile as window gets smaller */
+@media (max-width: 500px) {
+	.product {
+		width: 350px;
+	}
+}
+
+/* final size of card for mobile, card must get smaller to fit correctly */
+@media (max-width: 400px) {
+	.product {
+		width: 300px;
+	}
+}

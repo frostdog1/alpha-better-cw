@@ -7,7 +7,7 @@ const products = [
     imageUrl:
     "https://images.unsplash.com/photo-1611099024089-7f57ca9aca7f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3900&q=80",
     description:
-    "Wall-IT is a new generation of Smart Wallet with GPS tracking, a built-in power bank, anti-theft camera, SOS call button, stylish LED lights, battery charging capabilities and even built-in cryptocurrency support. Does it work? idk, maybe.",
+    "Walleon is a new generation of Smart Wallet with GPS tracking, a built-in power bank, anti-theft camera, SOS call button, stylish LED lights, battery charging capabilities and even built-in cryptocurrency support. Does it work? idk, maybe.",
     price: 121,
     countInStock: 15,
 },
