@@ -6,6 +6,12 @@ import { useSelector } from "react-redux";
 
 // destructure the click event defined in App.js
 const Navbar = ({ click }) => {
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
+
+    const getCartCount = () => {
+        return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+      };
 
     return (
         <nav className="navbar">
@@ -19,7 +25,7 @@ const Navbar = ({ click }) => {
                 {/* add an icon from font awesome */}
                 <i className="fas fa-shopping-cart"></i>
                 <span>
-                Cart <span className="cartlogo__badge">0</span> {/* this will give the number of carts */}
+                Cart <span className="cartlogo__badge">{getCartCount()}</span> {/* this will give the number of carts */}
                 </span>
             </Link>
             </li>

@@ -40,7 +40,7 @@ app.use('/api/auth', require("./routes/auth"));
 app.use('/api/private', require("./routes/private"));
 
 // redirect any links the api to the routes
-//app.use('/api/products', require('./routes/productRoutes'));
+app.use('/api/products', require('./routes/productRoutes'));
 
 // the ErrorHandler must be the last middleware used
 app.use(errorHandler);

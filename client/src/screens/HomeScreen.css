@@ -1,0 +1,40 @@
+/* center the homescreen */
+.homescreen {
+	max-width: 1300px;
+	margin: 1rem auto;
+}
+
+.homescreen__title {
+	font-size: 1.5rem;
+	color: #171717;
+	margin-bottom: 1rem;
+	margin-left: 8px;
+}
+
+/* grid container for the products */
+.homescreen__products {
+	display: grid;
+	/* repeast 4 items, set each to 1 fragment */
+	grid-template-columns: repeat(4, 1fr);
+}
+
+/* once window gets to the max-width breakpoint only have 3 items per column */
+@media (max-width: 1232px) {
+	.homescreen__products {
+		grid-template-columns: repeat(3, auto);
+	}
+}
+
+/* change to 2 columns for smaller screen */
+@media (max-width: 950px) {
+	.homescreen__products {
+		grid-template-columns: repeat(2, auto);
+	}
+}
+
+/* change to one fragment with no repeating items in grid for mobile sized screens */
+@media (max-width: 630px) {
+	.homescreen__products {
+		grid-template-columns: 1fr;
+	}
+}

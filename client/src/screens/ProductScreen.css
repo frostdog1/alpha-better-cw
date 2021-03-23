@@ -1,0 +1,113 @@
+/* Style the container that the individual product will be situated in */
+.productscreen {
+	max-width: 1300px;
+	margin: 1rem auto;
+	display: flex; /* add all the product info next to each other */
+}
+
+/* ######## Style the left info (i.e. the product name, image, price and description) */
+.productscreen__left {
+	display: flex;
+	flex: 0.8;
+}
+
+/* the image will take 60% of the productscreen container */
+.left__image {
+	margin: 1rem;
+	flex: 0.6;
+}
+
+/* give the container holding all the textual info the remaining 40% of the container */
+.left__info {
+	margin: 1rem;
+	flex: 0.4;
+	background: #fff;
+	height: fit-content;
+	font-size: 0.9rem; /* make text slightly smaller */
+}
+
+/* style the actual information fonts */
+.left__name {
+	font-weight: bold;
+	font-size: 1.3rem;
+}
+
+/* style the <p> tags in both the left and right side */
+.left__info > p,
+.right__info > p {
+	padding: 1rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* border seperates each item more clearly */
+}
+
+/* remove the last border at the bottom */
+.left__info > p:last-child,
+.right__info > p:last-child {
+	border: none;
+}
+
+/* right productscreen container (holds price, in stock status, quantity to buy and add to cart button */
+.productscreen__right {
+	flex: 0.2; /* as productscreen__left had a flex of 0.8, take up remaining space with flex of 0.2 */
+}
+
+.right__info {
+	width: 250px;
+	margin: 1rem;
+	background: #fff;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* style the <p> tags in right__info */
+.right__info p {
+	padding: 1rem;
+	font-size: 0.8rem;
+	display: grid; /* display as grid so they are more aligned */
+	grid-template-columns: repeat(2, 1fr);
+}
+
+/* style the button */
+.right__info p > button {
+	grid-column: 1/-1; /* span the grid column from 1 to -1 so it spans entire grid */
+	width: 100%;
+	padding: 10px 16px;
+	background: #171717;
+	color: #f4f4f4;
+	border: 1px solid #171717;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+/* style the quantity to buy selection dropdown */
+.right__info select {
+	padding: 10px 16px;
+}
+
+/* once window gets near mobile sized screen, stack all the elements in a single grid on top of each other */
+@media (max-width: 960px) {
+	.productscreen {
+		flex-direction: column;
+	}
+
+	.productscreen__left {
+		flex-direction: column;
+		flex: 1;
+	}
+
+	.left__image {
+		flex: 1;
+	}
+
+	.left__info {
+		flex: 1;
+	}
+
+	.productscreen__right {
+		flex: 1;
+		padding: 1rem;
+	}
+
+	.right__info {
+		width: 100%;
+		margin: 0;
+	}
+}
