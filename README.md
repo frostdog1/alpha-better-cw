@@ -9,7 +9,7 @@ The website will follow the design of:
 - a dashboard only accessible to authorised users
 - dashboard contains analystics of the user preferences to find what is best
 
-Redux is used for some CRUD operations like removing products from cart or removing users from the database with an admin account.
+Redux is used for some CRUF operations like displaying products, removing products from cart.
 
 
 
