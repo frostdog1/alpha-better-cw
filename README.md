@@ -1,4 +1,4 @@
-# Alpha-Better Testing on a Small Online E-commerce Website 
+# Alpha-Beta Testing on a Small Online E-commerce Website 
 MERN stack is used to develop this project. The purpose is to learn about customer preferences increasingly liklihood of the user staying on the site for longer. I believe an E-commerce website is a fitting backdrop for the a/b testing to take place. 
 
 The website will follow the design of:
