@@ -1,5 +1,5 @@
 # Alpha-Beta Testing on a Small Online E-commerce Website 
-MERN stack is used to develop this project. The purpose is to learn about customer preferences increasingly liklihood of the user staying on the site for longer. I believe an E-commerce website is a fitting backdrop for the a/b testing to take place. 
+MERN stack is used to develop this project. The purpose is to learn about customer preferences increasing the liklihood of the user staying on the site for longer. I believe an E-commerce website is a fitting backdrop for the a/b testing to take place. 
 
 The website will follow the design of:
 - user authentication by means of register and login
@@ -9,7 +9,7 @@ The website will follow the design of:
 - a dashboard only accessible to authorised users
 - dashboard contains analystics of the user preferences to find what is best
 
-Redux is used for some CRUF operations like displaying products, removing products from cart.
+Redux is used for some CRUD operations like displaying products, updating and removing products from cart.
 
 
 
